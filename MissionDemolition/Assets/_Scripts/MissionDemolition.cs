@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public enum GameMode
 {
@@ -15,11 +16,12 @@ public class MissionDemolition : MonoBehaviour
     static private MissionDemolition S;
 
     [Header("Inscribed")]
-    public Text uitLevel;
-    public Text uitShots;
+   // public TK.TextMeshProUGUI
+    public TMP_Text uitLevel;
+    public TMP_Text uitShots;
     public Vector3 castlePos;
     public GameObject[] castles;
-
+    
     [Header("Dynamic")]
     public int level;
     public int levelMax;
@@ -56,6 +58,8 @@ public class MissionDemolition : MonoBehaviour
         UpdateGUI();
 
         mode = GameMode.playing;
+
+        FollowCam.SWITCH_VIEW(FollowCam.eView.both);
     }
 
     void UpdateGUI()
@@ -72,6 +76,8 @@ public class MissionDemolition : MonoBehaviour
         if ((mode == GameMode.playing) && Goal.goalMet)
         {
             mode = GameMode.levelEnd;
+
+            FollowCam.SWITCH_VIEW(FollowCam.eView.both);
 
             Invoke("NextLevel", 2f);
         }
