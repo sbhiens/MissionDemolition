@@ -16,7 +16,7 @@ public class Goal : MonoBehaviour
             Goal.goalMet = true;
             Material mat = GetComponent<Renderer>().material;
             Color c = mat.color;
-            c.a = 0.10f;
+            c.a = 0.75f;
             mat.color = c;
         }
     }
